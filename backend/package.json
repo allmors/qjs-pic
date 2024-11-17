@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "cross-env QJS_ROOTDIR=functions QJS_PORT=56553 QJS_PREFIX=/api QJS_STATIC=uploads run-qjs --init",
+    "start": "cross-env QJS_ROOTDIR=functions QJS_PORT=56553 QJS_PREFIX=/api QJS_STATIC=uploads run-qjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {

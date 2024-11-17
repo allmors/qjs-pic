@@ -33,7 +33,14 @@ export async function action({
     throw new Error(res.statusText)
   }
   const data = await res.json()
-  return json(data)
+  const { params } = data
+  const url = import.meta.env.VITE_BASE_URL + params.url.replace('/uploads/', '/public/')
+  return json({
+    message: data.message,
+    params: {
+      url
+    }
+  })
 }
 
 export default function App() {
