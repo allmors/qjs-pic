@@ -4,7 +4,7 @@ FROM node:lts-alpine3.20
 WORKDIR /usr/src/app
 
 # 复制 package.json 和 package-lock.json 或 pnpm-lock.yaml (如果有)
-COPY package.json pnpm-lock.yaml* ./
+COPY package.json ./
 
 # 安装 pnpm（如果未安装）
 RUN npm install -g pnpm
