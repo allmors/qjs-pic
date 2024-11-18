@@ -34,11 +34,11 @@ export async function action({
   }
   const data = await res.json()
   const { params } = data
-  const url = import.meta.env.VITE_BASE_URL + params.url.replace('/uploads/', '/public/')
+  // const url = import.meta.env.VITE_BASE_URL + params.url.replace('/uploads/', '/public/')
   return json({
     message: data.message,
     params: {
-      url
+      url: import.meta.env.VITE_BASE_URL + params.url
     }
   })
 }
