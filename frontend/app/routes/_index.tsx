@@ -20,6 +20,16 @@ type FileListType = {
   url: string
 }
 
+const allowedImageTypes = [
+  'image/jpeg',
+  'image/png',
+  'image/gif',
+  'image/bmp',
+  'image/webp'
+];
+const maxFileSize = 5 * 1024 * 1024; // 5MB
+
+
 export async function action({
   request,
 }: ActionFunctionArgs) {
@@ -84,6 +94,16 @@ export default function App() {
   const getFile = async (file: File | Blob) => {
     try {
       if (!file) return;
+      if (!allowedImageTypes.includes(file.type)) {
+        toast.error(`File type supported: ${allowedImageTypes.join(', ')}`);
+        return;
+      }
+
+      if (file.size > maxFileSize) {
+        toast.error(`File size exceeds 5MB limit`);
+        return;
+      }
+
       setFile(file);
       const formData = new FormData();
       formData.append('file', file);
@@ -198,7 +218,7 @@ export default function App() {
               </div>
             )}
             <div className="flex flex-col items-center justify-center w-full h-full rounded-lg border border-[#ED6C71] border-dashed">
-              <input ref={inputDom} hidden name="file" type="file" className="absolute top-0 left-0 opacity-0 cursor-pointer" />
+              <input ref={inputDom} hidden name="file" type="file" accept="image/*" className="absolute top-0 left-0 opacity-0 cursor-pointer" />
               <img src={UploadIcon} alt="upload image" className="w-40 h-40 select-none pointer-events-none" />
               <p className="text-gray-500 leading-8">Drag and drop your file</p>
               <p className="text-gray-500 leading-8">or</p>
