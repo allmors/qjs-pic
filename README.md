@@ -38,6 +38,11 @@ npm install && npm build
 npm start
 ```
 
+#### docker部署
+```
+docker compose up -d --build
+```
+
 ### 功能
 
 - [x] 文件上传
