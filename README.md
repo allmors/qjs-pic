@@ -40,7 +40,7 @@ npm install && npm build
 npm start
 ```
 
-### docker部署
+### Docker部署
 ```
 docker compose up -d --build
 ```
@@ -56,13 +56,24 @@ docker compose up -d --build
 相关服务配置
 
 #### caddy
-
+- 常规部署
 ```
 demo.navs.eu.org {
-    reverse_proxy /api/* 127.0.0.1:56553 #不使用docker时存在
+    reverse_proxy /api/* 127.0.0.1:56553
     
     handle_path /uploads/* {
-        root * /home/qjs-pic/backend/uploads
+        root * /path/qjs-pic/backend/uploads
+        file_server
+    }
+    
+    reverse_proxy * http://127.0.0.1:3000
+}
+```
+- Docker部署
+```
+demo.navs.eu.org {
+    handle_path /uploads/* {
+        root * /path/qjs-pic/uploads
         file_server
     }
     
