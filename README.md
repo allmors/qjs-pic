@@ -14,6 +14,8 @@ demo：[https://demo.navs.eu.org](https://https://demo.navs.eu.org)
 git clone https://github.com/allmors/qjs-pic.git
 ```
 
+### 常规部署
+执行以下命令：
 #### 部署后端
 
 ```
@@ -38,7 +40,7 @@ npm install && npm build
 npm start
 ```
 
-#### docker部署
+### docker部署
 ```
 docker compose up -d --build
 ```
