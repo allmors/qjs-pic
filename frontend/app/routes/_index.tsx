@@ -34,7 +34,7 @@ export async function action({
   request,
 }: ActionFunctionArgs) {
   const body = await request.formData();
-  const res = await fetch(`${import.meta.env.VITE_BASE_URL}/api/upload`, {
+  const res = await fetch(`${process.env.BACKEND_URL}/api/upload`, {
     method: 'POST',
     body: body
   })

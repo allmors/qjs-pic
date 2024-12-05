@@ -52,7 +52,7 @@ npm start
 
 ```
 demo.navs.eu.org {
-    reverse_proxy /api/* 127.0.0.1:56553
+    reverse_proxy /api/* 127.0.0.1:56553 #不使用docker时存在
     
     handle_path /uploads/* {
         root * /home/qjs-pic/backend/uploads

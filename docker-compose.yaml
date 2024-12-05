@@ -1,0 +1,25 @@
+services:
+  backend:
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "56553:56553"
+    environment:
+      - PORT=56553
+    restart: unless-stopped
+    volumes:
+      - ./uploads:/usr/src/app/uploads
+
+  frontend:
+    build: 
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "5173:56554"
+    depends_on:
+      - backend
+    environment:
+      - BACKEND_URL=http://backend:56553
+    restart: unless-stopped
+
